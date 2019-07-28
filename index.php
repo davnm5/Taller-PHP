@@ -13,7 +13,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="images/php.png" width="70px" height="40px"></a>
+        <a class="navbar-brand" href="index.php"><img src="images/php.png" width="70px" height="40px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="clientes.php">Clientes</a>
@@ -52,6 +52,8 @@
             <h1 class="text">Freno Seguro</h1>
             <h3 class="text">Repositorio:</h3>
             <a href="https://github.com/davnm5/Taller-PHP" target="_blank"><img src="images/github.png" class="img"></a>
+            <h3 class="text">Aplicación:</h3>
+            <a href="https://taller-registros-php.herokuapp.com/" target="_blank"><img src="images/heroku.png" class="img2"></a>
 
             <h3 class="text">Autor: David Neira Martrus</h3>
         </div>

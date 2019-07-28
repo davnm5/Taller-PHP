@@ -12,14 +12,14 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="images/php.png" width="70px" height="40px"></a>
+        <a class="navbar-brand" href="index.php"><img src="images/php.png" width="70px" height="40px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
+                    <a class="nav-link" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="clientes.php">Clientes</a>
@@ -27,10 +27,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="autos.php">Autos</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="componentes.php">Componentes</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="mantenimientos.php">Mantenimientos</a>
                 </li>
             </ul>
@@ -43,18 +43,18 @@
         </nav>
     </nav>
 
-    <h2 class="formato">Componentes</h2>
+    <h2 class="formato">Mantenimientos</h2>
 
     <div class="row">
         <div class="col-md-4">
         </div>
         <div class="col-md-4">
-            <form action="registro_autos.php" method="post">
+            <form action="registro_mantenimientos.php" method="post">
                 <div class="form-group">
                     <label> Id Auto </label>
                     <select class="form-control" name="id_auto">
                         <?php
-                        $db_connection = pg_connect("host=localhost dbname=frenoSeguro port=5432 user=postgres password=admin");
+                        $db_connection = pg_connect("host=ec2-174-129-41-127.compute-1.amazonaws.com dbname=d8oq081g0iok2c port=5432 user=sffkjxowzokbpd password=53c0bbe35d5f252d984ef1b24676ba3c525925895c561ae147859562a7b170d8");
                         $result = pg_query($db_connection, "SELECT a.matricula FROM autos a");
                         while ($row = pg_fetch_row($result)) {
                             ?>
@@ -65,16 +65,21 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Id Componente</label>
-                    <input type="text" pattern="[0-9]{1,10}" class="form-control" name="id_componente"  required>
+                    <label>Id Mantenimiento</label>
+                    <input type="text" pattern="[0-9]{1,10}" class="form-control" name="id_mantenimiento" required>
                 </div>
                 <div class="form-group">
-                    <label>Estado</label>
-                    <input type="text" pattern="(\w*){2,}" class="form-control" name="estado" placeholder="ejemplo: Dañado" required>
+                    <label>Descripcion</label>
+                    <input type="text" minlength="5" class="form-control" name="descripcion"  required>
                 </div>
                 <div class="form-group">
-                    <label>Nombre de Componente</label>
-                    <input type="text" pattern="([a-zA-Z]\s*){2,}" class="form-control" placeholder="ejemplo: Caja de Cambios" name="componente"  required>
+                    <label>Fecha Inicio</label>
+                    <input type="date" class="form-control" name="fecha_inicio" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha Fin</label>
+                    <input type="date" class="form-control" name="fecha_fin" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Registrar</button>
             </form>

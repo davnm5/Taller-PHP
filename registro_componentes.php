@@ -12,22 +12,22 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="images/php.png" width="70px" height="40px"></a>
+        <a class="navbar-brand"href="index.php"><img src="images/php.png" width="70px" height="40px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
+                    <a class="nav-link" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="clientes.php">Clientes</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="autos.php">Autos</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="componentes.php">Componentes</a>
                 </li>
                 <li class="nav-item">
@@ -43,37 +43,36 @@
         </nav>
     </nav>
 
-    <h2 class="formato">Autos</h2>
+    <h2 class="formato">Componentes Registrados</h2>
 
-    <div class="row">
-        <div class="col-md-4">
+    <div class=" formato row">
+        <div class="col-md-3">
         </div>
         <?php
-        $db_connection = pg_connect("host=localhost dbname=frenoSeguro port=5432 user=postgres password=admin");
+        $db_connection = pg_connect("host=ec2-174-129-41-127.compute-1.amazonaws.com dbname=d8oq081g0iok2c port=5432 user=sffkjxowzokbpd password=53c0bbe35d5f252d984ef1b24676ba3c525925895c561ae147859562a7b170d8");
+
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $id = $_POST["id"];
-            $matricula = $_POST["matricula"];
-            $marca = $_POST["marca"];
-            $modelo = $_POST["modelo"];
-            $color = $_POST["color"];
+            $id_auto = $_POST["id_auto"];
+            $id_componente = $_POST["id_componente"];
+            $estado = $_POST["estado"];
+            $componente = $_POST["componente"];
 
-            $result = @pg_query($db_connection, "INSERT INTO autos (id_cliente,matricula,marca,modelo,color) VALUES ('$id','$matricula','$marca','$modelo','$color')");
+            $result = @pg_query($db_connection, "INSERT INTO componentes (id_auto,id_componente,estado_componente,nombre_componente) VALUES ('$id_auto','$id_componente','$estado','$componente')");
 
-            $result = pg_query($db_connection, "SELECT * FROM autos");
+            $result = pg_query($db_connection, "SELECT * FROM componentes");
             ?>
 
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Matricula</th>
-                            <th scope="col">Id Cliente</th>
-                            <th scope="col">Marca</th>
-                            <th scope="col">Modelo</th>
-                            <th scope="col">Color</th>
+                            <th scope="col">Id Componente</th>
+                            <th scope="col">Id Auto</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Nombre Componente</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,11 +83,10 @@
                             echo "
      <tr>
      <th scope=" . "row" . ">" . $n . "</th>
-     <td>" . $row[1] . "</td>
      <td>" . $row[2] . "</td>
-     <td>" . $row[4] . "</td>
-     <td>" . $row[0] . "</td>
      <td>" . $row[3] . "</td>
+     <td>" . $row[1] . "</td>
+     <td>" . $row[0] . "</td>
    </tr>";
                         }
                     }
@@ -96,7 +94,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
         </div>
     </div>
 </body>

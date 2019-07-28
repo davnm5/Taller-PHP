@@ -12,7 +12,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><img src="images/php.png" width="70px" height="40px"></a>
+    <a class="navbar-brand" href="index.php"><img src="images/php.png" width="70px" height="40px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,10 +21,10 @@
         <li class="nav-item">
           <a class="nav-link" href="index.html">Inicio</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item active ">
           <a class="nav-link" href="clientes.php">Clientes</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item ">
           <a class="nav-link" href="autos.php">Autos</a>
         </li>
         <li class="nav-item">
@@ -43,7 +43,7 @@
     </nav>
   </nav>
   <?php
-  $db_connection = pg_connect("host=localhost dbname=frenoSeguro port=5432 user=postgres password=admin");
+  $db_connection = pg_connect("host=ec2-174-129-41-127.compute-1.amazonaws.com dbname=d8oq081g0iok2c port=5432 user=sffkjxowzokbpd password=53c0bbe35d5f252d984ef1b24676ba3c525925895c561ae147859562a7b170d8");
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombres"];
@@ -52,14 +52,15 @@
 
     $result = @pg_query($db_connection, "INSERT INTO clientes (cedula,nombres,apellidos) VALUES ('$cedula','$nombre','$apellido')");
 
-    echo "<h3 class=" . "formato" . ">Clientes</h3>";
     $result = pg_query($db_connection, "SELECT * FROM clientes");
     ?>
 
-    <div class="row">
-      <div class="col-md-4">
+<h2 class="formato">Clientes Registrados</h2>
+
+    <div class="formato row">
+      <div class="col-md-3">
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <table class="table">
           <thead class="thead-dark">
             <tr>
@@ -87,7 +88,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
     </div>
   </div>
 </body>

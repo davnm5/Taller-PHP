@@ -12,14 +12,14 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="images/php.png" width="70px" height="40px"></a>
+        <a class="navbar-brand" href="index.php"><img src="images/php.png" width="70px" height="40px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
+                    <a class="nav-link" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="clientes.php">Clientes</a>
@@ -54,7 +54,8 @@
                     <label> Id Cliente </label>
                     <select class="form-control" name="id">
                         <?php
-                        $db_connection = pg_connect("host=localhost dbname=frenoSeguro port=5432 user=postgres password=admin");
+                        $db_connection = pg_connect("host=ec2-174-129-41-127.compute-1.amazonaws.com dbname=d8oq081g0iok2c port=5432 user=sffkjxowzokbpd password=53c0bbe35d5f252d984ef1b24676ba3c525925895c561ae147859562a7b170d8");
+
                         $result = pg_query($db_connection, "SELECT a.cedula FROM clientes a");
                         while ($row = pg_fetch_row($result)) {
                             ?>
@@ -66,19 +67,19 @@
 
                 <div class="form-group">
                     <label>Matricula</label>
-                    <input type="text" class="form-control" pattern="(\w*){2,}" name="matricula" placeholder="ejemplo: GXH542" required>
+                    <input type="text" class="form-control"  minlength="5" name="matricula" placeholder="ejemplo: GXH542" required>
                 </div>
                 <div class="form-group">
                     <label>Marca</label>
-                    <input type="text" pattern="(\w*){2,}" class="form-control" name="marca" placeholder="ejemplo: Chevrolet" required>
+                    <input type="text"  minlength="3" class="form-control" name="marca" placeholder="ejemplo: Chevrolet" required>
                 </div>
                 <div class="form-group">
                     <label>Color</label>
-                    <input type="text" pattern="([a-zA-Z]\s*){2,}" class="form-control" name="color"  required>
+                    <input type="text"  minlength="3" class="form-control" name="color" required>
                 </div>
                 <div class="form-group">
                     <label>Modelo</label>
-                    <input type="text" pattern="(\w\s*){2,}" class="form-control" name="modelo" placeholder="ejemplo: Spark" required>
+                    <input type="text" minlength="3" class="form-control" name="modelo" placeholder="ejemplo: Spark" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Registrar</button>
             </form>
